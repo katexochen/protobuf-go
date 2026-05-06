@@ -1689,6 +1689,24 @@ str_to_nested: {
 }
 `,
 		wantErr: "exceeded maximum recursion depth",
+	}, {
+		desc: "exceed recursion limit: discarded unknown nested message",
+		umo: prototext.UnmarshalOptions{
+			DiscardUnknown: true,
+			RecursionLimit: 1,
+		},
+		inputMessage: &pb2.Scalars{},
+		inputText:    `unknown_field: { nested: { deeper: "x" } }`,
+		wantErr:      "exceeded maximum recursion depth",
+	}, {
+		desc: "exceed recursion limit: discarded unknown list of messages",
+		umo: prototext.UnmarshalOptions{
+			DiscardUnknown: true,
+			RecursionLimit: 1,
+		},
+		inputMessage: &pb2.Scalars{},
+		inputText:    `unknown_field: [ { nested: { deeper: "x" } } ]`,
+		wantErr:      "exceeded maximum recursion depth",
 	}}
 
 	for _, msg := range makeMessages(protobuild.Message{},
