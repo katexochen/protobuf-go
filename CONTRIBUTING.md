@@ -13,8 +13,11 @@ At this time, we are unfortunately unable to accept GitHub pull requests.
 The first step is to configure your environment.
 Please follow the steps outlined in
 ["Becoming a contributor" (golang.org)](https://golang.org/doc/contribute.html#contributor)
-as the setup for contributing to the `protobuf` project is identical
-to that for contributing to the `go` project.
+as the setup for contributing to the `protobuf` project is largely the same as
+that for contributing to the `go` project.
+
+The project's tests also require Bazel. See http://bazel.build/install for
+installation instructions.
 
 
 ## Before contributing code
